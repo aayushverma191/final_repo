@@ -1,0 +1,25 @@
+---
+# vars file for test
+soft_list: 
+      - nginx
+      - tomcat9
+
+user_list:
+      - name: test_user
+
+      - name: ninja
+        groups: ubuntu
+        shell: /bin/bash
+        state: present
+        password: "{{ 'user1234' | password_hash('sha512') }}"
+
+git_repos:
+      - repo_url: https://github.com/opstree/spring3hibernate
+        dest: /home/ubuntu/spring3hibernate
+
+dir_list:
+      - path: /home/ubuntu/testies
+      - path: /home/ubuntu/ninja
+        state: directory
+        owner: root
+        group: root
